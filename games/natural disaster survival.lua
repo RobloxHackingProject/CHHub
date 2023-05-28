@@ -22,17 +22,6 @@ local sec3_1 = tab3:Section("SolarisLib")
 local runService = game:GetService("RunService")
 
 --Window 1
-sec:Button("Disable FallDamage", function()
-	pcall(function()
-		game.Players.LocalPlayer.Character.FallDamageScript:Destroy()
-	end)
-	game.Players.LocalPlayer.CharacterAdded:Connect(function()
-		pcall(function()
-			game.Players.LocalPlayer.Character:WaitForChild("FallDamageScript"):Destroy()
-		end)
-	end)
-end)
-
 local toggle = sec:Toggle("Walk on Water", false,"Jesus", function(bool)
 	if bool == false then 
 		game.Workspace.WaterLevel.CanCollide = false
