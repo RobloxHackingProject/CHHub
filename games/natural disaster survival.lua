@@ -15,6 +15,7 @@ local sec_3 = tab:Section("Character Related")
 
 local sec2_1 = tab2:Section("UI")
 local sec2_2 = tab2:Section("Map")
+local sec2_3 = tab2:Section("Hub Settings")
 
 local sec3_1 = tab3:Section("SolarisLib")
 
@@ -123,6 +124,17 @@ end)
 sec2_2:Button("Reset Water Color", function()
 	game.Workspace.WaterLevel.BrickColor = BrickColor.new("Bright blue")
 	game.Workspace.Structure.FloodLevel.BrickColor = BrickColor.new("Bright blue")
+end)
+
+local UIon = true
+sec2_3:Bind("Toggle UI", Enum.KeyCode.F, false, "toggleui", function()
+  	if UIon then
+  		UIon = false
+  		game:GetService("CoreGui").Solarisgui.Enabled = false
+  	else
+  		UIon = true
+  		game:GetService("CoreGui").Solarisgui.Enabled = true
+  	end
 end)
 
 --Window 3
