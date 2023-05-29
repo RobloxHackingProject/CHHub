@@ -1,5 +1,5 @@
 --https://raw.githubusercontent.com/Stebulous/solaris-ui-lib/main/source.lua
-print('V1.0')
+print('V1.1')
 -- This User Interface Library is brought to you by Solaris Software and THRP.
 pcall(function() --Remove UI if it already exists.
 if game.CoreGui:FindFirstChild("notiHolder") then game.CoreGui:FindFirstChild("notiHolder"):destroy() end
@@ -745,7 +745,7 @@ function SolarisLib:New(Config)
 					SliderMain.SliderVal.Text = tostring(a)
                     SliderMain.SliderFrame.SliderCurrentFrame.Size = UDim2.new((val or 0) / max, 0, 1, 0)
                     Slider.Value = val
-					return callback(Slider.Value)
+					return callback(a)
 				end	
 
                 spawn(function()
