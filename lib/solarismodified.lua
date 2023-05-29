@@ -1,5 +1,5 @@
 --https://raw.githubusercontent.com/Stebulous/solaris-ui-lib/main/source.lua
-print('V1.0')
+print('V1.1')
 -- This User Interface Library is brought to you by Solaris Software and THRP.
 pcall(function() --Remove UI if it already exists.
 if game.CoreGui:FindFirstChild("notiHolder") then game.CoreGui:FindFirstChild("notiHolder"):destroy() end
@@ -741,12 +741,13 @@ function SolarisLib:New(Config)
 				game:GetService("UserInputService").InputChanged:Connect(function(input) if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then move(input) end end)
 
                 function Slider:Set(val)
-                    local a = tostring(val and (val / max) * (max - min) + min) or 0
-					SliderMain.SliderVal.Text = tostring(a)
-                    SliderMain.SliderFrame.SliderCurrentFrame.Size = UDim2.new((val or 0) / max, 0, 1, 0)
-                    Slider.Value = val
-					return callback(tonumber(a))
-		end	
+    			local a = tostring(val and ((val - min) / (max - min)) * (max - min) + min) or tostring(min)
+    			SliderMain.SliderVal.Text = a
+    			SliderMain.SliderFrame.SliderCurrentFrame.Size = UDim2.new((val or min) / max, 0, 1, 0)
+    			Slider.Value = val
+    			return callback(Slider.Value)
+		end
+	
 
                 spawn(function()
                     while wait() do
