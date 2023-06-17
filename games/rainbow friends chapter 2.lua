@@ -87,14 +87,14 @@ exploittab:Toggle('Item ESP', function(bool)
 end)
 
 exploittab:Slider('Walkspeed', 16, 16, 100, function(a)
-	if a ~= -69420 then
-	event = runService.RenderStepped:Connect(function()
-		wait(.1)
-		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = a
-	end)
-	else
-		event:Disconnect()
-	end
+    if event then
+        event:Disconnect()
+    end
+
+    event = runService.RenderStepped:Connect(function()
+        wait(0.1)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = a
+    end)
 end)
 
 --TeleportTab
