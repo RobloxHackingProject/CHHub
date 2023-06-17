@@ -168,6 +168,8 @@ function Library:Create(table)
     shadow.ZIndex = -1
     shadow.Parent = dark_UI
 
+    dragUILibrary.new(shadow):Enable()
+
     tabContainer.Parent = main
     main.Parent = dark_UI
     main.AnchorPoint = Vector2.new(0.5,0.5)
