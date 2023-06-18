@@ -162,13 +162,16 @@ function Library:Create(table)
     shadow.SliceCenter = Rect.new(20, 20, 280, 280)
     shadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     shadow.BackgroundTransparency = 1
-    shadow.Position = UDim2.fromScale(0.224, 0.272)
+    shadow.Position = UDim2.fromScale(0.224, 0.272) 0.244, 0.292
     shadow.Selectable = true
     shadow.Size = UDim2.fromOffset(529, 331)
     shadow.ZIndex = -1
     shadow.Parent = dark_UI
 
-    dragUILibrary.new(shadow):Enable()
+    while true do wait()
+        shadow.Position.X = main.Position.X
+	shadow.Position.Z = main.Position.Z + 20
+    end
 
     tabContainer.Parent = main
     main.Parent = dark_UI
