@@ -88,6 +88,17 @@ spawn(function()
 	end
 end)
 
+spawn(function()
+    while true do
+        wait()
+        pcall(function()
+            if game.CoreGui.dark_UI.shadow then
+                game.CoreGui.dark_UI.shadow.Position = game.CoreGui.dark_UI.main.Position
+            end
+        end)
+    end
+end)
+
 
 function Library:Create(table)
     local windowName = table.Name
@@ -100,7 +111,7 @@ function Library:Create(table)
     
     --Make UI draggable.
     local dragUILibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/RobloxHackingProject/CHHub/main/lib/draggable.lua"))()
-	dragUILibrary.new(main):Enable()
+    dragUILibrary.new(main):Enable()
 
     local title = Instance.new("TextLabel")
     title.Name = "title"
@@ -167,11 +178,6 @@ function Library:Create(table)
     shadow.Size = UDim2.fromOffset(529, 331)
     shadow.ZIndex = -1
     shadow.Parent = dark_UI
-
-    while true do wait()
-        shadow.Position.X = main.Position.X
-	shadow.Position.Z = main.Position.Z + 20
-    end
 
     tabContainer.Parent = main
     main.Parent = dark_UI
