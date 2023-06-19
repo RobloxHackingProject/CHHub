@@ -36,7 +36,7 @@ exploittab:Toggle('Walk On Water', function(bool)
 end)
 
 exploittab:Toggle('Solid Island', function(bool)
-	for i, v in pairs (game.workspace:GetDescendants())do
+	for _, v in pairs (game.workspace:GetDescendants())do
 		if v.Name == 'LowerRocks' then
 			v.CanCollide = bool
 		end
@@ -49,19 +49,11 @@ end)
 
 exploittab:Toggle('Autofarm', function(bool)
 	if bool then
-		pcall(function()
-			if game.Players.LocalPlayer.Character.FallDamageScript then
-				game.Players.LocalPlayer.Character.FallDamageScript:Destroy()
-			end
-		end)
 		event = runService.RenderStepped:Connect(function()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-264, 195, 288)
 		end)
-	end
-	if not bool then
-		pcall(function()
-			event:Disconnect()
-		end)
+	else
+		event:Disconnect()
 	end
 end)
 
