@@ -173,7 +173,7 @@ function Library:Create(table)
     shadow.SliceCenter = Rect.new(20, 20, 280, 280)
     shadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     shadow.BackgroundTransparency = 1
-    shadow.Position = UDim2.fromScale(0.224, 0.272) 0.244, 0.292
+    shadow.Position = UDim2.fromScale(0.224, 0.272)
     shadow.Selectable = true
     shadow.Size = UDim2.fromOffset(529, 331)
     shadow.ZIndex = -1
