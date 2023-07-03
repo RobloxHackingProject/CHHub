@@ -15,6 +15,7 @@ local UIToggleEvent
 local toggleBind
 local keyBindButton
 local UIEnabled = true
+local ToggleUICursor = false
 local loaded = false
 local Library = {}
 local TweenService = game:GetService("TweenService")
@@ -26,11 +27,19 @@ local Mouse = LocalPlayer:GetMouse()
 local HTTPService = game:GetService("HttpService")
 
 --Cool code for the keybind
+function Library:DoCursorToggle()
+    ToggleUICursor = true
+end
+
 local function UIToggle2()
 	UIToggleEvent = UserInputService.InputBegan:Connect(function(input)
 		if input.KeyCode == toggleBind then
 			UIEnabled = not UIEnabled
 			dark_UI.Enabled = UIEnabled
+
+            if ToggleUICursor then
+                UserInputService.MouseIconEnabled = UIEnabled
+            end
 		end
 	end)
 end
@@ -207,6 +216,7 @@ function Library:Create(table)
         main1.BackgroundTransparency = 1
         main1.Size = UDim2.fromOffset(10, 24)
         main1.Parent = tabContainer
+        main1.Modal = true
 
         --// Creating the container
         local container = Instance.new("Frame")
