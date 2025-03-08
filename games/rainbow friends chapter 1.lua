@@ -34,10 +34,6 @@ exploittab:Button('Collect all items', function()
     end
 end)
 
-exploittab:Toggle('Toggle Shadows', function(bool)
-    lighting.GlobalShadows = not bool
-end)
-
 exploittab:Toggle('Friends ESP', function(bool)
     if bool then
         local runService = game:GetService("RunService")
@@ -95,6 +91,10 @@ exploittab:Slider('Walkspeed', 16, 16, 100, function(a)
         wait(0.1)
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = a
     end)
+end)
+
+exploittab:Toggle('Toggle Shadows', function(bool)
+    lighting.GlobalShadows = not bool
 end)
 
 --TeleportTab
