@@ -43,17 +43,15 @@ exploittab:Toggle('Solid Island', function(bool)
 	end
 end)
 
-exploittab:Toggle('Choose Map', function(bool)
-	game.Players.LocalPlayer.PlayerGui.MainGui.MapVotePage.Visible = bool
-end)
-
 exploittab:Toggle('Autofarm', function(bool)
 	if bool then
+		oldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 		event = runService.RenderStepped:Connect(function()
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-264, 195, 288)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-278, 159, 342)
 		end)
 	else
 		event:Disconnect()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldPos
 	end
 end)
 
@@ -67,7 +65,7 @@ exploittab:Button('Launch Rocket', function()
 end)
 
 exploittab:Button('Say Current Disaster', function()
-	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(game.Players.LocalPlayer.Character.SurvivalTag.Value, "All")
+	game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(game.Players.LocalPlayer.Character.SurvivalTag.Value)
 end)
 
 exploittab:Slider('WalkSpeed', 16, 16, 50, function(a)
@@ -88,8 +86,7 @@ end)
 
 exploittab:Button('Remove Ads', function()
 	game:GetService("Workspace").BillboardAd:Destroy()
-	game:GetService("Workspace")["Main Portal Template "]:Destroy()
-	game:GetService("Workspace").ReturnPortal:Destroy()
+	game:GetService("Workspace").ForwardPortal:Destroy()
 end)
 
 
