@@ -37,7 +37,9 @@ end)
 exploittab:Toggle('Parkour Autofarm', function(bool)
 	if bool then
 		event = runService.RenderStepped:Connect(function()
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(39.1792374, 71.5856247, -528.383972)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-21, 62, -421)
+			task.wait(.5)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(39, 71, -528)
 		end)
 	end
 	if not bool then
