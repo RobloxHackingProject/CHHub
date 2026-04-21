@@ -32,8 +32,7 @@ exploittab:Toggle('Autofarm', function(bool)
 			for _,v in pairs(game.Workspace.tower.sections:GetDescendants()) do
 				if v.Name == "start" or v.Name == "stop" then
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-					--game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldPos
-					--wait(5)
+					wait(1)
 				end
 			end
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldPos
