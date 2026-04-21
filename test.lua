@@ -81,7 +81,8 @@ end)
 teleporttab:Button('Top of Tower', function()
 	for _,v in pairs(game.Workspace.tower.sections.finish.steps:GetChildren()) do
 		if v.Size.X == 1 and v.Size.Y == 25 and v.Size.Z == 46.22054672241211 then
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+			brick = v.CFrame.Position
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(brick.X, brick.Y + 1, brick.Z)
 		end
 	end
 end)
