@@ -17,6 +17,7 @@ local win = BlekLib:Create({
 
 --Tabs
 local exploittab = win:Tab('Exploits')
+local esptab = win:Tab('Esp')
 local teleporttab = win:Tab('Teleports')
 local settings = win:Tab('Settings')
 local credits = win:Tab('Credits')
@@ -89,12 +90,13 @@ exploittab:Button('Remove Ads', function()
 	game:GetService("Workspace").ForwardPortal:Destroy()
 end)
 
-exploittab:Toggle('Player ESP', function(bool)
+--EspTab
+esptab:Toggle('Player ESP', function(bool)
     if bool then
         local runService = game:GetService("RunService")
         event = runService.RenderStepped:Connect(function()
             for _,v in pairs(game:GetService("Players"):GetChildren()) do
-		            chr = v.Character
+		chr = v.Character
                 if not chr:FindFirstChild("Lol") then
                     local esp = Instance.new("Highlight", chr)
                     esp.Name = "Lol"
