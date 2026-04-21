@@ -1,4 +1,3 @@
---Tower of Hell, teleporting gets detected :(
 local BlekLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/RobloxHackingProject/CHHub/main/lib/library.lua"))()
 
 --Locals
@@ -25,34 +24,16 @@ local credits = win:Tab('Credits')
 
 
 --ExploitTab
-exploittab:Toggle('Autofarm', function(bool)
-	if bool then
-		oldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-		event = runService.RenderStepped:Connect(function()
-			for _,v in pairs(game.Workspace.tower.sections:GetDescendants()) do
-				if v.Name == "start" or v.Name == "stop" then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-					wait(1)
-				end
-			end
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldPos
-			brick = game.Workspace.tower.sections.finish.FinishGlow.CFrame.Position
-			wait(10)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(brick.X, brick.Y - 5, brick.Z)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldPos
-		end)
-	else
-		event:Disconnect()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldPos
-	end
-end)
-
 exploittab:Slider('WalkSpeed', 16, 16, 50, function(a)
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = a
 end)
 
 exploittab:Slider('JumpPower', 50, 50, 500, function(a)
 	game.Players.LocalPlayer.Character.Humanoid.JumpPower = a
+end)
+
+exploittab:Slider('Gravity', 196, 0, 196, function(a)
+	game.Workspace.Gravity = a
 end)
 
 --EspTab
@@ -80,15 +61,13 @@ esptab:Toggle('Player ESP', function(bool)
 end)
 
 --TeleportTab
-teleporttab:Button('Top of Tower', function()
-	for _,v in pairs(game.Workspace.tower.sections.finish.steps:GetChildren()) do
-		if v.Size.X == 1 and v.Size.Y == 25 and v.Size.Z == 46.22054672241211 then
-			brick = v.CFrame.Position
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(brick.X, brick.Y + 1, brick.Z)
-		end
-	end
+teleporttab:Button('Map', function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4705, 156, -4331)
 end)
 
+teleporttab:Button('Lobby', function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4648, 963, 4225)
+end)
 
 --Settings
 settings:Button('Destroy GUI', function()
