@@ -1,3 +1,4 @@
+--Tower of Hell, teleporting gets detected :(
 local BlekLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/RobloxHackingProject/CHHub/main/lib/library.lua"))()
 
 --Locals
