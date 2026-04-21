@@ -30,13 +30,17 @@ exploittab:Toggle('Autofarm', function(bool)
 		oldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 		event = runService.RenderStepped:Connect(function()
 			for _,v in pairs(game.Workspace.tower.sections:GetDescendants()) do
-				if v.Name == "start" or v.Name == "stop" or v.Name == "center"  then
+				if v.Name == "start" or v.Name == "stop" then
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+					--game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldPos
+					--wait(5)
 				end
 			end
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldPos
 			brick = game.Workspace.tower.sections.finish.FinishGlow.CFrame.Position
+			wait(10)
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(brick.X, brick.Y - 5, brick.Z)
-			wait(60)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldPos
 		end)
 	else
 		event:Disconnect()
