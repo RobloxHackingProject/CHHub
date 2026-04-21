@@ -24,31 +24,12 @@ local credits = win:Tab('Credits')
 
 
 --ExploitTab
-exploittab:Toggle('Walk On Water', function(bool)
-	local water = game.Workspace.WaterLevel
-	if not bool then 
-		water.CanCollide = false
-		water.Size = Vector3.new(10, 1, 10)
-	end
-	if bool then 
-		water.CanCollide = true
-		water.Size = Vector3.new(1000, 1, 1000)
-	end
-end)
-
-exploittab:Toggle('Solid Island', function(bool)
-	for _, v in pairs (game.workspace:GetDescendants())do
-		if v.Name == 'LowerRocks' then
-			v.CanCollide = bool
-		end
-	end
-end)
-
 exploittab:Toggle('Autofarm', function(bool)
 	if bool then
 		oldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 		event = runService.RenderStepped:Connect(function()
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-278, 159, 342)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(78,game.Workspace.tower.top.value,73)
+			wait(5)
 		end)
 	else
 		event:Disconnect()
@@ -56,38 +37,16 @@ exploittab:Toggle('Autofarm', function(bool)
 	end
 end)
 
-exploittab:Button('Launch Rocket', function()
-	pcall(function()
-		fireclickdetector(game:GetService("Workspace").Structure["Launch Land"]["SPACESHIP!!"].Shuttle.IgnitionButton.ClickDetector)
-		fireclickdetector(game:GetService("Workspace").Structure["Launch Land"].RocketStand.ConsoleLower.ReleaseButtonLower.ClickDetector)
-		fireclickdetector(game:GetService("Workspace").Structure["Launch Land"].RocketStand.ConsoleUpper.ReleaseButtonUpper.ClickDetector)
-		fireclickdetector(game:GetService("Workspace").Structure["Launch Land"].LoadingTower.Console.ReleaseEntryBridge.ClickDetector)
-	end)
-end)
-
-exploittab:Button('Say Current Disaster', function()
-	game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(game.Players.LocalPlayer.Character.SurvivalTag.Value)
-end)
-
 exploittab:Slider('WalkSpeed', 16, 16, 50, function(a)
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = a
 end)
 
+exploittab:Slider('JumpPower', 50, 50, 500, function(a)
+	game.Players.LocalPlayer.Character.Humanoid.JumpPower = a
+end)
+
 exploittab:Slider('Gravity', 196, 0, 196, function(a)
 	game.Workspace.Gravity = a
-end)
-
-exploittab:Button('Remove Sandstorm UI', function()
-	game.Players.LocalPlayer.PlayerGui.SandStormGui:destroy()
-end)
-
-exploittab:Button('Remove Blizzard UI', function()
-	game.Players.LocalPlayer.PlayerGui.BlizzardGui:destroy()
-end)
-
-exploittab:Button('Remove Ads', function()
-	game:GetService("Workspace").BillboardAd:Destroy()
-	game:GetService("Workspace").ForwardPortal:Destroy()
 end)
 
 --EspTab
@@ -114,14 +73,9 @@ esptab:Toggle('Player ESP', function(bool)
     end
 end)
 
-
 --TeleportTab
-teleporttab:Button('Island', function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-108, 49, 0)
-end)
-
-teleporttab:Button('Tower', function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-264, 196, 288)
+teleporttab:Button('Top of Tower', function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-28,game.Workspace.tower.top.value,0)
 end)
 
 
