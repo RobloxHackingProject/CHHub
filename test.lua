@@ -28,8 +28,16 @@ exploittab:Toggle('Autofarm', function(bool)
 	if bool then
 		oldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 		event = runService.RenderStepped:Connect(function()
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(78,game.Workspace.tower.top.value,73)
-			wait(5)
+			for _,v in pairs(game.Workspace.tower.sections:GetDescendants()) do
+				if v.Name == "start" or v.Name == "stop" or v.Name == "center"  then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+				end
+			end
+			brick = game.Workspace.tower.sections.finish.FinishGlow.CFrame.Position
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(brick.X, brick.Y - 5, brick.Z)
+			while game.Workspace.tower do
+				wait()
+			end
 		end)
 	else
 		event:Disconnect()
@@ -43,10 +51,6 @@ end)
 
 exploittab:Slider('JumpPower', 50, 50, 500, function(a)
 	game.Players.LocalPlayer.Character.Humanoid.JumpPower = a
-end)
-
-exploittab:Slider('Gravity', 196, 0, 196, function(a)
-	game.Workspace.Gravity = a
 end)
 
 --EspTab
@@ -75,7 +79,11 @@ end)
 
 --TeleportTab
 teleporttab:Button('Top of Tower', function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-28,game.Workspace.tower.top.value,0)
+	for _,v in pairs(game.Workspace.tower.sections.finish.steps:GetChildren()) do
+		if v.Size.X == 1 and v.Size.Y == 25 and v.Size.Z == 46.22054672241211 then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+		end
+	end
 end)
 
 
