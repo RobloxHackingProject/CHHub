@@ -35,9 +35,7 @@ exploittab:Toggle('Autofarm', function(bool)
 			end
 			brick = game.Workspace.tower.sections.finish.FinishGlow.CFrame.Position
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(brick.X, brick.Y - 5, brick.Z)
-			while game.Workspace.tower do
-				wait()
-			end
+			wait(60)
 		end)
 	else
 		event:Disconnect()
